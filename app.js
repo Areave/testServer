@@ -1,5 +1,7 @@
-const express = require('express');const cors = require('cors');
+const express = require('express');
+const cors = require('cors');
 const path = require('path');
+const testRouter = require('./testRouter.js');
 const bodyParser = require('body-parser');
 
 
@@ -11,9 +13,13 @@ app.use(express.json({extended: true}));
 // app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/test', testRouter);
 // app.use('/api/auth', authRouter);
 // app.use('/api/links', linksRouter);
 app.get('/', (req, res)=>{
+    res.send('hey, its me');
+});
+app.get('/test', (req, res)=>{
     res.send('hey, its me');
 });
 
